@@ -19,8 +19,10 @@ const { title = siteConfig.title, description = siteConfig.description } = Astro
     <meta name="generator" content={Astro.generator} />
     <meta name="theme-color" content="#0B0F19" />
     <meta name="description" content={description} />
+    <link rel="canonical" href={siteConfig.siteUrl} />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={siteConfig.name} />
+    <meta property="og:url" content={siteConfig.siteUrl} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta name="twitter:card" content="summary" />

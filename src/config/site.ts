@@ -2,6 +2,7 @@ interface SiteConfig {
   name: string;
   title: string;
   description: string;
+  siteUrl: string;
   githubUrl: string | null;
   documentationUrl: string;
 }
@@ -11,6 +12,7 @@ export const siteConfig: SiteConfig = {
   title: "TokenClash - Switch AI Providers Like Clash",
   description:
     "Local AI gateway for routing multiple AI providers through one OpenAI-compatible endpoint.",
-  githubUrl: "https://github.com/webszy/tokenclash.dev",
+  siteUrl: "https://tokenclash.dev",
+  githubUrl: "https://github.com/webszy/tokenclash",
   documentationUrl: "#developer-experience",
 };

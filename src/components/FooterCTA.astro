@@ -28,7 +28,7 @@ import { siteConfig } from "../config/site";
     <div class="footer-line">
       <a class="footer-brand" href="#top">TokenClash<span>/</span></a>
       <p>One endpoint. Unlimited providers.</p>
-      <p>Local-first · OpenAI-compatible</p>
+      <a class="site-domain" href={siteConfig.siteUrl}>tokenclash.dev</a>
     </div>
   </div>
 </footer>
@@ -111,8 +111,13 @@ import { siteConfig } from "../config/site";
     margin: 0;
   }
 
-  .footer-line p:last-child {
+  .site-domain {
     margin-left: auto;
+    transition: color 150ms ease;
+  }
+
+  .site-domain:hover {
+    color: var(--route);
   }
 
   @media (max-width: 35rem) {
@@ -126,7 +131,7 @@ import { siteConfig } from "../config/site";
       flex-direction: column;
     }
 
-    .footer-line p:last-child {
+    .site-domain {
       margin-left: 0;
     }
   }

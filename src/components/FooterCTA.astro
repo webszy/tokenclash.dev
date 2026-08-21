@@ -1,0 +1,140 @@
+---
+import { siteConfig } from "../config/site";
+---
+
+<footer class="footer section-rule">
+  <div class="shell">
+    <div class="cta-panel">
+      <div>
+        <p class="eyebrow">Run the control plane</p>
+        <h2>Open source AI gateway for the next generation of AI tools.</h2>
+      </div>
+      <div class="cta-actions">
+        {
+          siteConfig.githubUrl ? (
+            <a class="button button-primary" href={siteConfig.githubUrl} target="_blank" rel="noreferrer">
+              GitHub <span aria-hidden="true">↗</span>
+            </a>
+          ) : (
+            <span class="button button-disabled" aria-disabled="true" title="Repository coming soon">
+              GitHub · Coming soon
+            </span>
+          )
+        }
+        <a class="button button-secondary" href={siteConfig.documentationUrl}>Documentation</a>
+      </div>
+    </div>
+
+    <div class="footer-line">
+      <a class="footer-brand" href="#top">TokenClash<span>/</span></a>
+      <p>One endpoint. Unlimited providers.</p>
+      <p>Local-first · OpenAI-compatible</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    padding-block: clamp(4rem, 8vw, 6rem) 2rem;
+  }
+
+  .cta-panel {
+    position: relative;
+    display: grid;
+    overflow: hidden;
+    gap: 2rem;
+    border: 1px solid color-mix(in srgb, var(--route) 48%, var(--line));
+    border-radius: 0.9rem;
+    background:
+      linear-gradient(90deg, var(--route-soft) 1px, transparent 1px),
+      linear-gradient(var(--route-soft) 1px, transparent 1px), var(--surface);
+    background-size: 2rem 2rem;
+    padding: clamp(1.5rem, 5vw, 3.5rem);
+  }
+
+  .cta-panel::after {
+    position: absolute;
+    right: -6rem;
+    bottom: -10rem;
+    width: 20rem;
+    height: 20rem;
+    border: 1px solid var(--route);
+    border-radius: 50%;
+    box-shadow: 0 0 6rem var(--route-soft);
+    content: "";
+    opacity: 0.4;
+  }
+
+  h2 {
+    position: relative;
+    z-index: 1;
+    max-width: 48rem;
+    margin: 0;
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 640;
+    letter-spacing: -0.05em;
+    line-height: 1.03;
+  }
+
+  .cta-actions {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: flex-end;
+  }
+
+  .footer-line {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.7rem 1.5rem;
+    border-top: 1px solid var(--line);
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    color: var(--muted);
+    font-family: var(--font-code);
+    font-size: 0.65rem;
+  }
+
+  .footer-brand {
+    color: var(--ink);
+    font-weight: 800;
+  }
+
+  .footer-brand span {
+    color: var(--route);
+  }
+
+  .footer-line p {
+    margin: 0;
+  }
+
+  .footer-line p:last-child {
+    margin-left: auto;
+  }
+
+  @media (max-width: 35rem) {
+    .cta-actions,
+    .cta-actions :global(.button) {
+      width: 100%;
+    }
+
+    .footer-line {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    .footer-line p:last-child {
+      margin-left: 0;
+    }
+  }
+
+  @media (min-width: 58rem) {
+    .cta-panel {
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: end;
+    }
+  }
+</style>

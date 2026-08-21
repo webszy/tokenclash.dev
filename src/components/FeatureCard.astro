@@ -1,0 +1,102 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  label: string;
+  exampleLines: string[];
+  accent?: "blue" | "orange";
+}
+
+const { title, description, label, exampleLines, accent = "blue" } = Astro.props;
+---
+
+<article class:list={["feature-card", `accent-${accent}`]}>
+  <div class="feature-meta"><span></span>{label}</div>
+  <h3>{title}</h3>
+  <p>{description}</p>
+  <div class="feature-example" aria-label={`${title} example`}>
+    {exampleLines.map((line, index) => <code><i>{String(index + 1).padStart(2, "0")}</i>{line}</code>)}
+  </div>
+</article>
+
+<style>
+  .feature-card {
+    display: flex;
+    min-height: 22rem;
+    flex-direction: column;
+    border: 1px solid var(--line);
+    border-radius: 0.75rem;
+    background: linear-gradient(145deg, var(--surface-raised), var(--surface));
+    padding: clamp(1.25rem, 3vw, 1.75rem);
+    transition:
+      border-color 180ms ease,
+      transform 180ms ease;
+  }
+
+  .feature-card:hover {
+    transform: translateY(-3px);
+    border-color: color-mix(in srgb, var(--card-accent) 55%, var(--line));
+  }
+
+  .accent-blue {
+    --card-accent: var(--route);
+  }
+
+  .accent-orange {
+    --card-accent: var(--fallback);
+  }
+
+  .feature-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--muted);
+    font-family: var(--font-code);
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+  }
+
+  .feature-meta span {
+    width: 0.45rem;
+    height: 0.45rem;
+    border-radius: 50%;
+    background: var(--card-accent);
+    box-shadow: 0 0 0.7rem var(--card-accent);
+  }
+
+  h3 {
+    margin: 2rem 0 0;
+    font-size: clamp(1.45rem, 3vw, 1.8rem);
+    letter-spacing: -0.035em;
+    line-height: 1.15;
+  }
+
+  p {
+    margin: 0.8rem 0 0;
+    color: var(--muted);
+  }
+
+  .feature-example {
+    display: grid;
+    gap: 0.4rem;
+    margin-top: auto;
+    border-top: 1px solid var(--line);
+    padding-top: 1.35rem;
+  }
+
+  code {
+    display: flex;
+    align-items: center;
+    color: var(--ink);
+    font-family: var(--font-code);
+    font-size: 0.73rem;
+  }
+
+  code i {
+    width: 2rem;
+    flex: 0 0 auto;
+    color: var(--line-strong);
+    font-style: normal;
+  }
+</style>

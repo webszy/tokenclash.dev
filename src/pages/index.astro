@@ -1,0 +1,76 @@
+---
+import CodeExample from "../components/CodeExample.astro";
+import Comparison from "../components/Comparison.astro";
+import FeatureCard from "../components/FeatureCard.astro";
+import FooterCTA from "../components/FooterCTA.astro";
+import Hero from "../components/Hero.astro";
+import Roadmap from "../components/Roadmap.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout>
+  <Hero />
+
+  <section class="section section-rule" id="features" aria-labelledby="features-title">
+    <div class="shell">
+      <p class="eyebrow">Traffic control</p>
+      <h2 class="section-heading" id="features-title">Everything you need to control AI providers</h2>
+      <p class="section-intro">Routing logic lives in one local gateway, not across every tool you use.</p>
+
+      <div class="feature-grid">
+        <FeatureCard
+          title="Smart Routing"
+          description="Route different models to the providers you choose."
+          label="MODEL MAP"
+          exampleLines={["GPT-5  →  Provider A", "Claude →  Provider B"]}
+        />
+        <FeatureCard
+          title="Automatic Fallback"
+          description="Keep working when a provider is unavailable."
+          label="FAILOVER"
+          exampleLines={["Provider A  × failed", "Provider B  ✓ active"]}
+          accent="orange"
+        />
+        <FeatureCard
+          title="Local First"
+          description="Your API keys. Your gateway. Your control."
+          label="LOCALHOST"
+          exampleLines={["keys     → local", "traffic  → controlled"]}
+        />
+      </div>
+    </div>
+  </section>
+
+  <Comparison />
+  <CodeExample />
+  <Roadmap />
+  <FooterCTA />
+</Layout>
+
+<style>
+  .feature-grid {
+    display: grid;
+    gap: 1rem;
+    margin-top: 3rem;
+  }
+
+  @media (min-width: 46rem) {
+    .feature-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .feature-grid :global(article:last-child) {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media (min-width: 68rem) {
+    .feature-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .feature-grid :global(article:last-child) {
+      grid-column: auto;
+    }
+  }
+</style>

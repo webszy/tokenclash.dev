@@ -1,0 +1,102 @@
+---
+import { siteConfig } from "../config/site";
+import ArchitectureDiagram from "./ArchitectureDiagram.astro";
+---
+
+<section class="hero shell" id="top" aria-labelledby="hero-title">
+  <div class="hero-copy">
+    <p class="eyebrow">Local-first AI gateway</p>
+    <h1 id="hero-title">
+      Switch AI providers <span>like Clash.</span>
+    </h1>
+    <p class="hero-kicker">One endpoint. Unlimited providers.</p>
+    <p class="hero-description">
+      TokenClash is a local AI gateway that routes, manages and controls your AI providers through
+      a single OpenAI-compatible endpoint.
+    </p>
+    <div class="hero-actions">
+      <a class="button button-primary" href="#developer-experience">
+        Get Started <span aria-hidden="true">→</span>
+      </a>
+      {
+        siteConfig.githubUrl ? (
+          <a class="button button-secondary" href={siteConfig.githubUrl} target="_blank" rel="noreferrer">
+            View on GitHub <span aria-hidden="true">↗</span>
+          </a>
+        ) : (
+          <span class="button button-disabled" aria-disabled="true" title="Repository coming soon">
+            GitHub · Coming soon
+          </span>
+        )
+      }
+    </div>
+  </div>
+
+  <ArchitectureDiagram />
+</section>
+
+<style>
+  .hero {
+    display: grid;
+    min-height: calc(100svh - 4.25rem);
+    align-items: center;
+    gap: 4rem;
+    padding-block: clamp(4.5rem, 9vw, 7.5rem);
+  }
+
+  .hero-copy {
+    max-width: 44rem;
+  }
+
+  h1 {
+    max-width: 42rem;
+    margin: 0;
+    font-size: clamp(3.15rem, 10vw, 6.75rem);
+    font-weight: 650;
+    letter-spacing: -0.075em;
+    line-height: 0.92;
+    text-wrap: balance;
+  }
+
+  h1 span {
+    display: block;
+    color: var(--route);
+  }
+
+  .hero-kicker {
+    margin: 1.6rem 0 0;
+    color: var(--ink);
+    font-family: var(--font-code);
+    font-size: clamp(1rem, 3vw, 1.35rem);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+  }
+
+  .hero-description {
+    max-width: 37rem;
+    margin: 1rem 0 0;
+    color: var(--muted);
+    font-size: clamp(1rem, 2vw, 1.125rem);
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 2rem;
+  }
+
+  @media (max-width: 27rem) {
+    .hero-actions,
+    .hero-actions :global(.button) {
+      width: 100%;
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .hero {
+      grid-template-columns: minmax(0, 0.92fr) minmax(30rem, 1.08fr);
+      gap: clamp(2.5rem, 5vw, 5rem);
+    }
+  }
+</style>

@@ -1,0 +1,356 @@
+<div class="architecture" aria-label="Client applications connect to TokenClash on localhost, which routes requests to multiple AI providers">
+  <div class="diagram-toolbar" aria-hidden="true">
+    <span></span><span></span><span></span>
+    <code>route.table</code>
+    <em>LIVE</em>
+  </div>
+
+  <div class="route-map">
+    <div class="clients node-group">
+      <span class="node-label">CLIENTS</span>
+      <div class="client-list">
+        <div class="mini-node"><i></i>Claude Code</div>
+        <div class="mini-node"><i></i>Cursor</div>
+        <div class="mini-node"><i></i>OpenAI SDK</div>
+      </div>
+    </div>
+
+    <div class="route-line inbound" aria-hidden="true">
+      <span>POST</span>
+    </div>
+
+    <div class="endpoint node-group">
+      <span class="node-label">OPENAI-COMPATIBLE</span>
+      <code>localhost:9208<span>/v1</span></code>
+    </div>
+
+    <div class="route-line gateway-link" aria-hidden="true"></div>
+
+    <div class="gateway node-group">
+      <div class="gateway-title">
+        <svg viewBox="0 0 32 32" aria-hidden="true">
+          <path d="M5 9h8l3 7 3-7h8M5 23h8l3-7 3 7h8" />
+          <circle cx="5" cy="9" r="2" /><circle cx="27" cy="9" r="2" />
+          <circle cx="5" cy="23" r="2" /><circle cx="27" cy="23" r="2" />
+        </svg>
+        <div><strong>TokenClash</strong><small>ROUTE · CONTROL · FALLBACK</small></div>
+      </div>
+      <span class="health"><i></i>gateway healthy</span>
+    </div>
+
+    <div class="provider-bus" aria-hidden="true">
+      <span class="route-tag">ROUTE</span>
+      <span class="fallback-tag">FALLBACK</span>
+    </div>
+
+    <div class="providers node-group">
+      <span class="node-label">PROVIDERS</span>
+      <div class="provider-list">
+        <div class="provider-node"><i></i><strong>OpenAI</strong><small>primary</small></div>
+        <div class="provider-node"><i></i><strong>Provider A</strong><small>model rule</small></div>
+        <div class="provider-node fallback-provider"><i></i><strong>Provider B</strong><small>fallback</small></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .architecture {
+    overflow: hidden;
+    border: 1px solid var(--line-strong);
+    border-radius: 0.85rem;
+    background:
+      linear-gradient(var(--route-soft) 1px, transparent 1px),
+      linear-gradient(90deg, var(--route-soft) 1px, transparent 1px), var(--surface);
+    background-size: 2rem 2rem;
+    box-shadow: 0 2rem 5rem var(--shadow);
+  }
+
+  .diagram-toolbar {
+    display: flex;
+    height: 2.7rem;
+    align-items: center;
+    gap: 0.4rem;
+    border-bottom: 1px solid var(--line);
+    background: color-mix(in srgb, var(--surface-raised) 90%, transparent);
+    padding-inline: 0.85rem;
+  }
+
+  .diagram-toolbar > span {
+    width: 0.45rem;
+    height: 0.45rem;
+    border-radius: 50%;
+    background: var(--line-strong);
+  }
+
+  .diagram-toolbar code {
+    margin-left: 0.45rem;
+    color: var(--muted);
+    font-family: var(--font-code);
+    font-size: 0.65rem;
+  }
+
+  .diagram-toolbar em {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin-left: auto;
+    color: var(--success);
+    font-family: var(--font-code);
+    font-size: 0.58rem;
+    font-style: normal;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+  }
+
+  .diagram-toolbar em::before {
+    width: 0.4rem;
+    height: 0.4rem;
+    border-radius: 50%;
+    background: currentColor;
+    box-shadow: 0 0 0.7rem currentColor;
+    content: "";
+  }
+
+  .route-map {
+    padding: clamp(1rem, 4vw, 1.75rem);
+  }
+
+  .node-group {
+    position: relative;
+    border: 1px solid var(--line);
+    border-radius: 0.65rem;
+    background: color-mix(in srgb, var(--surface) 92%, transparent);
+    box-shadow: 0 0.8rem 1.8rem color-mix(in srgb, var(--shadow) 60%, transparent);
+  }
+
+  .node-label {
+    position: absolute;
+    top: -0.55rem;
+    left: 0.65rem;
+    background: var(--surface);
+    color: var(--muted);
+    padding-inline: 0.3rem;
+    font-family: var(--font-code);
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+  }
+
+  .clients,
+  .providers {
+    padding: 1.1rem 0.8rem 0.8rem;
+  }
+
+  .client-list,
+  .provider-list {
+    display: grid;
+    gap: 0.55rem;
+  }
+
+  .mini-node,
+  .provider-node {
+    display: flex;
+    min-height: 2.35rem;
+    align-items: center;
+    gap: 0.55rem;
+    border: 1px solid var(--line);
+    border-radius: 0.4rem;
+    background: var(--surface-raised);
+    padding: 0.55rem 0.65rem;
+    font-family: var(--font-code);
+    font-size: 0.66rem;
+    font-weight: 700;
+  }
+
+  .mini-node i,
+  .provider-node i {
+    flex: 0 0 auto;
+    width: 0.42rem;
+    height: 0.42rem;
+    border-radius: 50%;
+    background: var(--route);
+    box-shadow: 0 0 0.65rem var(--route);
+  }
+
+  .route-line {
+    position: relative;
+    width: 2px;
+    height: 2.6rem;
+    margin-inline: auto;
+    background: var(--route);
+    box-shadow: 0 0 0.8rem var(--route);
+  }
+
+  .route-line::after {
+    position: absolute;
+    bottom: -0.08rem;
+    left: 50%;
+    width: 0.45rem;
+    height: 0.45rem;
+    transform: translateX(-50%) rotate(45deg);
+    border-right: 2px solid var(--route);
+    border-bottom: 2px solid var(--route);
+    content: "";
+  }
+
+  .route-line span {
+    position: absolute;
+    top: 50%;
+    left: 0.7rem;
+    transform: translateY(-50%);
+    color: var(--route);
+    font-family: var(--font-code);
+    font-size: 0.55rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+  }
+
+  .endpoint {
+    padding: 0.8rem;
+    text-align: center;
+  }
+
+  .endpoint code {
+    color: var(--ink);
+    font-family: var(--font-code);
+    font-size: clamp(0.78rem, 3vw, 0.95rem);
+    font-weight: 800;
+  }
+
+  .endpoint code span {
+    color: var(--route);
+  }
+
+  .gateway {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    border-color: color-mix(in srgb, var(--route) 58%, var(--line));
+    padding: 0.95rem;
+  }
+
+  .gateway-title {
+    display: flex;
+    min-width: 0;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .gateway-title svg {
+    width: 2rem;
+    height: 2rem;
+    flex: 0 0 auto;
+    fill: var(--surface);
+    stroke: var(--route);
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.8;
+  }
+
+  .gateway-title strong,
+  .gateway-title small {
+    display: block;
+  }
+
+  .gateway-title strong {
+    font-family: var(--font-code);
+    font-size: 0.85rem;
+  }
+
+  .gateway-title small {
+    overflow: hidden;
+    margin-top: 0.15rem;
+    color: var(--muted);
+    font-family: var(--font-code);
+    font-size: 0.5rem;
+    letter-spacing: 0.07em;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .health {
+    display: none;
+    flex: 0 0 auto;
+    align-items: center;
+    gap: 0.35rem;
+    color: var(--success);
+    font-family: var(--font-code);
+    font-size: 0.57rem;
+  }
+
+  .health i {
+    width: 0.4rem;
+    height: 0.4rem;
+    border-radius: 50%;
+    background: currentColor;
+  }
+
+  .provider-bus {
+    position: relative;
+    width: 66%;
+    height: 3.2rem;
+    margin-inline: auto;
+    border-right: 2px solid var(--fallback);
+    border-bottom: 2px solid var(--route);
+    border-left: 2px solid var(--route);
+  }
+
+  .route-tag,
+  .fallback-tag {
+    position: absolute;
+    bottom: 0.3rem;
+    font-family: var(--font-code);
+    font-size: 0.48rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+  }
+
+  .route-tag {
+    left: 0.45rem;
+    color: var(--route);
+  }
+
+  .fallback-tag {
+    right: 0.45rem;
+    color: var(--fallback);
+  }
+
+  .provider-node {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 0.55rem;
+  }
+
+  .provider-node i {
+    grid-row: 1 / 3;
+  }
+
+  .provider-node small {
+    color: var(--muted);
+    font-size: 0.55rem;
+    font-weight: 500;
+  }
+
+  .provider-node.fallback-provider {
+    border-color: color-mix(in srgb, var(--fallback) 50%, var(--line));
+  }
+
+  .provider-node.fallback-provider i {
+    background: var(--fallback);
+    box-shadow: 0 0 0.65rem var(--fallback);
+  }
+
+  @media (min-width: 30rem) {
+    .client-list,
+    .provider-list {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .health {
+      display: inline-flex;
+    }
+  }
+</style>

@@ -1,0 +1,152 @@
+<section class="section section-rule" aria-labelledby="comparison-title">
+  <div class="shell">
+    <p class="eyebrow">One stable endpoint</p>
+    <h2 class="section-heading" id="comparison-title">Stop rebuilding your setup around provider outages.</h2>
+
+    <div class="comparison-grid">
+      <article class="comparison-panel before">
+        <header><span></span><strong>Without TokenClash</strong><small>MANUAL</small></header>
+        <ol>
+          <li><i>01</i><span>Switch profile</span></li>
+          <li><i>02</i><span>Restart application</span></li>
+          <li><i>03</i><span>Change configuration</span></li>
+          <li><i>04</i><span>Try again</span></li>
+        </ol>
+      </article>
+
+      <article class="comparison-panel after">
+        <header><span></span><strong>With TokenClash</strong><small>AUTOMATIC</small></header>
+        <div class="flow" aria-label="Application connects through localhost and TokenClash to multiple providers">
+          <div>Application</div><i></i>
+          <div><code>localhost:9208</code></div><i></i>
+          <div class="active">TokenClash</div><i></i>
+          <div>Multiple providers</div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<style>
+  .comparison-grid {
+    display: grid;
+    gap: 1rem;
+    margin-top: 3rem;
+  }
+
+  .comparison-panel {
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 0.75rem;
+    background: var(--surface);
+  }
+
+  header {
+    display: flex;
+    min-height: 3.5rem;
+    align-items: center;
+    gap: 0.6rem;
+    border-bottom: 1px solid var(--line);
+    padding-inline: 1rem;
+  }
+
+  header span {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+  }
+
+  .before header span {
+    background: var(--fallback);
+    box-shadow: 0 0 0.65rem var(--fallback);
+  }
+
+  .after header span {
+    background: var(--success);
+    box-shadow: 0 0 0.65rem var(--success);
+  }
+
+  header strong,
+  header small {
+    font-family: var(--font-code);
+  }
+
+  header strong {
+    font-size: 0.75rem;
+  }
+
+  header small {
+    margin-left: auto;
+    color: var(--muted);
+    font-size: 0.55rem;
+    letter-spacing: 0.1em;
+  }
+
+  ol {
+    display: grid;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border-bottom: 1px solid var(--line);
+    padding: 1rem 1.25rem;
+    color: var(--muted);
+    font-family: var(--font-code);
+    font-size: 0.8rem;
+  }
+
+  li:last-child {
+    border-bottom: 0;
+  }
+
+  li i {
+    color: var(--fallback);
+    font-style: normal;
+  }
+
+  .flow {
+    display: grid;
+    place-items: center;
+    padding: 1.4rem;
+  }
+
+  .flow div {
+    width: min(100%, 18rem);
+    border: 1px solid var(--line);
+    border-radius: 0.4rem;
+    background: var(--surface-raised);
+    padding: 0.65rem 1rem;
+    text-align: center;
+    font-family: var(--font-code);
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+
+  .flow div.active {
+    border-color: var(--route);
+    box-shadow: 0 0 1.5rem var(--route-soft);
+    color: var(--route);
+  }
+
+  .flow i {
+    width: 2px;
+    height: 1.25rem;
+    background: var(--route);
+  }
+
+  .flow code {
+    color: var(--route);
+  }
+
+  @media (min-width: 48rem) {
+    .comparison-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+</style>

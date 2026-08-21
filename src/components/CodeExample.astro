@@ -1,0 +1,168 @@
+<section class="section section-rule" id="developer-experience" aria-labelledby="developer-title">
+  <div class="shell developer-grid">
+    <div class="developer-copy">
+      <p class="eyebrow">OpenAI-compatible</p>
+      <h2 class="section-heading" id="developer-title">Change the endpoint.<br />Keep your tools.</h2>
+      <p class="section-intro">Works with existing OpenAI-compatible clients.</p>
+      <ul>
+        <li><span>01</span>No application-specific plugin</li>
+        <li><span>02</span>No provider lock-in</li>
+        <li><span>03</span>No remote control plane</li>
+      </ul>
+    </div>
+
+    <div class="terminal" aria-label="TokenClash quick start code example">
+      <header>
+        <div><i></i><i></i><i></i></div>
+        <span>tokenclash — quick-start</span>
+        <em>zsh</em>
+      </header>
+      <pre><code><span class="comment"># Point your client to the local gateway</span>
+<span class="prompt">$</span> export OPENAI_BASE_URL=<span class="value">http://localhost:9208/v1</span>
+
+<span class="comment"># Existing OpenAI-compatible code keeps working</span>
+<span class="keyword">from</span> openai <span class="keyword">import</span> OpenAI
+
+client = OpenAI(
+    api_key=<span class="value">"tokenclash"</span>
+)</code></pre>
+      <footer><span><i></i>localhost:9208</span><span>ready</span></footer>
+    </div>
+  </div>
+</section>
+
+<style>
+  .developer-grid {
+    display: grid;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  ul {
+    display: grid;
+    gap: 0.7rem;
+    margin: 2rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    display: flex;
+    gap: 0.85rem;
+    color: var(--muted);
+    font-family: var(--font-code);
+    font-size: 0.75rem;
+  }
+
+  li span {
+    color: var(--route);
+  }
+
+  .terminal {
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid var(--line-strong);
+    border-radius: 0.75rem;
+    background: #080c14;
+    box-shadow: 0 2rem 5rem var(--shadow);
+    color: #e9eef6;
+  }
+
+  .terminal header,
+  .terminal footer {
+    display: flex;
+    align-items: center;
+    border-color: #222d40;
+    background: #101725;
+    font-family: var(--font-code);
+  }
+
+  .terminal header {
+    min-height: 3rem;
+    gap: 0.8rem;
+    border-bottom: 1px solid #222d40;
+    padding-inline: 0.9rem;
+  }
+
+  .terminal header > div {
+    display: flex;
+    gap: 0.35rem;
+  }
+
+  .terminal header i {
+    width: 0.45rem;
+    height: 0.45rem;
+    border-radius: 50%;
+    background: #3b4b65;
+  }
+
+  .terminal header span {
+    overflow: hidden;
+    color: #8d9aaf;
+    font-size: 0.65rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .terminal header em {
+    margin-left: auto;
+    color: #8d9aaf;
+    font-size: 0.6rem;
+    font-style: normal;
+  }
+
+  pre {
+    margin: 0;
+    overflow-x: auto;
+    padding: clamp(1.2rem, 4vw, 2rem);
+    font-size: clamp(0.7rem, 2vw, 0.84rem);
+    line-height: 1.9;
+    tab-size: 2;
+  }
+
+  code {
+    font-family: var(--font-code);
+  }
+
+  .comment {
+    color: #627089;
+  }
+
+  .prompt,
+  .keyword {
+    color: #36a3ff;
+  }
+
+  .value {
+    color: #ffad75;
+  }
+
+  .terminal footer {
+    justify-content: space-between;
+    border-top: 1px solid #222d40;
+    padding: 0.65rem 0.9rem;
+    color: #8d9aaf;
+    font-size: 0.58rem;
+  }
+
+  .terminal footer span:first-child {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .terminal footer i {
+    width: 0.4rem;
+    height: 0.4rem;
+    border-radius: 50%;
+    background: #49d69f;
+    box-shadow: 0 0 0.6rem #49d69f;
+  }
+
+  @media (min-width: 60rem) {
+    .developer-grid {
+      grid-template-columns: minmax(0, 0.8fr) minmax(32rem, 1.2fr);
+      gap: clamp(3rem, 7vw, 7rem);
+    }
+  }
+</style>

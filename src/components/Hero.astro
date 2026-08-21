@@ -15,9 +15,7 @@ import ArchitectureDiagram from "./ArchitectureDiagram.astro";
       a single OpenAI-compatible endpoint.
     </p>
     <div class="hero-actions">
-      <a class="button button-primary" href="#developer-experience">
-        Get Started <span aria-hidden="true">→</span>
-      </a>
+      <span class="button button-primary work-status" aria-disabled="true">I’m working on it</span>
       {
         siteConfig.githubUrl ? (
           <a class="button button-secondary" href={siteConfig.githubUrl} target="_blank" rel="noreferrer">
@@ -84,6 +82,14 @@ import ArchitectureDiagram from "./ArchitectureDiagram.astro";
     flex-wrap: wrap;
     gap: 0.75rem;
     margin-top: 2rem;
+  }
+
+  .work-status {
+    cursor: default;
+  }
+
+  .work-status:hover {
+    transform: none;
   }
 
   @media (max-width: 27rem) {

@@ -4,6 +4,7 @@ interface SiteConfig {
   description: string;
   siteUrl: string;
   githubUrl: string | null;
+  xUrl: string;
   documentationUrl: string;
 }
 
@@ -14,5 +15,6 @@ export const siteConfig: SiteConfig = {
     "Local AI gateway for routing multiple AI providers through one OpenAI-compatible endpoint.",
   siteUrl: "https://tokenclash.dev",
   githubUrl: "https://github.com/webszy/tokenclash",
+  xUrl: "https://x.com/WalterAIBuilder",
   documentationUrl: "#developer-experience",
 };

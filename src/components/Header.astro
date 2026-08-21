@@ -22,6 +22,20 @@ import { siteConfig } from "../config/site";
     </nav>
 
     <div class="header-actions">
+      <a
+        class="x-link"
+        href={siteConfig.xUrl}
+        target="_blank"
+        rel="noreferrer"
+        aria-label="Follow WalterAIBuilder on X"
+        title="WalterAIBuilder on X"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.474l-5.073-6.633-5.806 6.633H2.165l7.735-8.835L1.472 2.25H8.11l4.583 6.061 5.551-6.061Zm-1.161 17.52h1.833L7.114 4.126H5.147L17.083 19.77Z"
+          />
+        </svg>
+      </a>
       {
         siteConfig.githubUrl ? (
           <a class="github-link" href={siteConfig.githubUrl} target="_blank" rel="noreferrer">
@@ -126,6 +140,29 @@ import { siteConfig } from "../config/site";
     display: flex;
     align-items: center;
     gap: 0.7rem;
+  }
+
+  .x-link {
+    display: grid;
+    width: 2.75rem;
+    height: 2.75rem;
+    place-items: center;
+    border-radius: 0.5rem;
+    color: var(--muted);
+    transition:
+      background-color 150ms ease,
+      color 150ms ease;
+  }
+
+  .x-link:hover {
+    background: var(--surface);
+    color: var(--ink);
+  }
+
+  .x-link svg {
+    width: 0.9rem;
+    height: 0.9rem;
+    fill: currentColor;
   }
 
   .github-link {

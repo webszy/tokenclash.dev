@@ -1,6 +1,8 @@
 packages:
   - "."
 
+ignoreWorkspaceRootCheck: true
+
 onlyBuiltDependencies:
   - esbuild
 

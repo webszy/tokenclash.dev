@@ -6,6 +6,7 @@ interface SiteConfig {
   githubUrl: string | null;
   xUrl: string;
   documentationUrl: string;
+  googleAnalyticsId: string;
 }
 
 export const siteConfig: SiteConfig = {
@@ -17,4 +18,5 @@ export const siteConfig: SiteConfig = {
   githubUrl: "https://github.com/webszy/tokenclash",
   xUrl: "https://x.com/WalterAIBuilder",
   documentationUrl: "#developer-experience",
+  googleAnalyticsId: "G-7C2KSF34LB",
 };

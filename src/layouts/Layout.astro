@@ -9,6 +9,7 @@ interface Props {
 }
 
 const { title = siteConfig.title, description = siteConfig.description } = Astro.props;
+const { googleAnalyticsId } = siteConfig;
 ---
 
 <!doctype html>
@@ -30,6 +31,21 @@ const { title = siteConfig.title, description = siteConfig.description } = Astro
     <meta name="twitter:description" content={description} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <title>{title}</title>
+    {
+      googleAnalyticsId && (
+        <>
+          <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}`}></script>
+          <script is:inline define:vars={{ googleAnalyticsId }}>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+              dataLayer.push(arguments);
+            }
+            gtag("js", new Date());
+            gtag("config", googleAnalyticsId);
+          </script>
+        </>
+      )
+    }
     <script is:inline>
       (() => {
         const storedTheme = localStorage.getItem("tokenclash-theme");
